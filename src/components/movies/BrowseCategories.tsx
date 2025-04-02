@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { genresApi } from '../../api/genresApi';
 import { useTranslation } from '../../hooks/useTranslation';
 
+// Navegação rápida pelos diferentes gêneros de filmes pela página inicial
 const BrowseCategories = () => {
   const { t } = useTranslation();
 

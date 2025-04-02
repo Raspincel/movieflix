@@ -13,6 +13,7 @@ const MovieCard = ({ movie }: Props) => {
         key={movie.id}
         className="relative group overflow-clip rounded-2xl shadow-xl transition-all duration-500 hover:shadow-cyan-500/20 hover:shadow-xl max-w-96 aspect-[500/750] mx-2 cursor-pointer"
       >
+        {/* Se o filme não tiver imagem, mostra um pôster cinza pulsando no lugar */}
         {movie.cover ? (
           <img
             src={movie.cover}

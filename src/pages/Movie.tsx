@@ -9,6 +9,7 @@ import ErrorPage from '../components/layout/Error';
 import NotFoundPage from '../components/layout/NotFound';
 import { useTranslation } from '../hooks/useTranslation';
 
+// Página que exibe informações sobre um filme específico
 const MoviePage = () => {
   const { id } = useParams();
   const { isError, isLoading, movie } = useFetchMovie(Number(id));

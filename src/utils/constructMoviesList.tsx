@@ -9,6 +9,7 @@ interface Args {
   genres: Genre[];
 }
 
+// Recebe os dados da API e retorna um array de filmes
 const constructMoviesList = ({ genres, movies, cover }: Args): Movie[] => {
   return movies.map((movie) => ({
     title: movie.title,

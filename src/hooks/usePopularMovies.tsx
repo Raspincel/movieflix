@@ -16,6 +16,7 @@ interface Args {
   page: number;
 }
 
+// Retorna os filmes mais populares dos últimos tempos da API
 export default function usePopularMovies({ page }: Args): ReturnData {
   const { basePath, genres, isError: auxIsError, isLoading: auxIsLoading } = useMovieConstructionData();
 
@@ -52,7 +53,7 @@ export default function usePopularMovies({ page }: Args): ReturnData {
     isLoading: false,
     isError: false,
     movies,
-    // the api caps pages at 500
+    // a api limita as páginas em 500
     totalPages: Math.min(500, moviesData.total_pages),
     totalResults: Math.min(500*20, moviesData.total_results)
   };

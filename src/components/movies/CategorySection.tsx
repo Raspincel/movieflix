@@ -8,6 +8,7 @@ interface Props {
   id: string | number;
 }
 
+// Seção de filmes por gênero
 const CategorySection = ({ fetchMovies, title, id }: Props) => {
   const { t } = useTranslation();
 

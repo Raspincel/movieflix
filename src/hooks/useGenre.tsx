@@ -8,6 +8,7 @@ interface ReturnData {
   isError: boolean;
 }
 
+// Retorna os dados de todos os gêneros da API
 const useGenre = (genreId: number): ReturnData => {
   const { data, isLoading, isError, isSuccess } = useQuery({
     queryFn: genresApi.getGenres,

@@ -1,3 +1,4 @@
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface Props {
@@ -15,40 +16,55 @@ const Pagination = ({ currentPage, goToPage, totalPages }: Props) => {
     const items = [];
     const maxPagesToShow = 5;
 
+    // A seguir, o algoritmo para decidir quais páginas devem ser mostradas na paginação
+
+    // Se a busca resultou em poucas páginas, mostra todas
     if (totalPages <= maxPagesToShow) {
       for (let i = 1; i <= totalPages; i++) {
         items.push(i);
       }
-    } else {
-      const firstPage = 1;
-      const lastPage = totalPages;
 
-      items.push(firstPage);
+      // Apesar de items ser incondicionalmente retornado mais à frente,
+      // Retornamos logo para não precisar aninhar o restante do código em um `else`
+      return items
+    }
 
-      let startPage = Math.max(2, currentPage - 1);
-      let endPage = Math.min(lastPage - 1, currentPage + 1);
+    // Sempre exibe a primeira e a última página
+    const firstPage = 1;
+    const lastPage = totalPages;
 
-      if (currentPage <= 2) {
-        endPage = Math.min(lastPage - 1, 4);
-      } else if (currentPage >= lastPage - 1) {
-        startPage = Math.max(2, lastPage - 3);
-      }
+    items.push(firstPage);
 
-      if (startPage > 2) {
-        items.push('ellipsis-start');
-      }
+    // Exibe uma página antes e uma página depois da página atual
+    let startPage = Math.max(2, currentPage - 1);
+    let endPage = Math.min(lastPage - 1, currentPage + 1);
 
-      for (let i = startPage; i <= endPage; i++) {
-        items.push(i);
-      }
+    if (currentPage <= 2) {
+      // Se a página atual for a primeira ou a segunda, exibe as 4 primeiras páginas
+      endPage = Math.min(lastPage - 1, 4);
+    } else if (currentPage >= lastPage - 1) {
+      // Se a página atual for a penúltima ou a última, exibe as 4 últimas páginas
+      startPage = Math.max(2, lastPage - 3);
+    }
 
-      if (endPage < lastPage - 1) {
-        items.push('ellipsis-end');
-      }
+    // Se tiver mais de 2 páginas entre a primeira e a página atual, exibe um "..."
+    if (startPage > 2) {
+      items.push('ellipsis-start');
+    }
 
-      if (lastPage !== firstPage) {
-        items.push(lastPage);
-      }
+    // Adiciona as páginas ao redor da página atual e a própria página atual
+    for (let i = startPage; i <= endPage; i++) {
+      items.push(i);
+    }
+
+    // Se tiver mais de 2 páginas entre a última e a página atual, exibe um "..."
+    if (endPage < lastPage - 1) {
+      items.push('ellipsis-end');
+    }
+
+    // Adiciona a última página
+    if (lastPage !== firstPage) {
+      items.push(lastPage);
     }
 
     return items;

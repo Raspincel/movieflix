@@ -4,6 +4,7 @@ import { configApi } from '../api/configApi';
 import { DetailedMovie } from '../types/movie';
 import { formatCurrency, formatMinutes } from '../utils/format';
 
+// Retorna os dados de um filme específico da API
 const useFetchMovie = (id: number) => {
   const {
     data: configData,

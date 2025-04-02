@@ -2,6 +2,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useTranslation } from '../../hooks/useTranslation';
 
+// Página exibida quando alguma operação falha
 const ErrorPage = () => {
   const { t } = useTranslation();
 

@@ -8,6 +8,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import MovieCard from '../components/movie/MovieCard';
 import { useSearchParams } from 'react-router-dom';
 import { Movie } from '../types/movie';
+import { MOVIES_PER_PAGE } from '../utils/constants';
 
 interface Props {
   title: string;
@@ -39,8 +40,9 @@ const MoviesPage = ({ useGetMovies, title }: Props) => {
     return <ErrorPage />;
   }
 
-  const from = 20 * (page - 1) + 1;
-  const to = 20 * (page - 1) + movies.length;
+  // Calcula o intervalo de resultados exibidos
+  const from = MOVIES_PER_PAGE * (page - 1) + 1;
+  const to = MOVIES_PER_PAGE * (page - 1) + movies.length;
 
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {

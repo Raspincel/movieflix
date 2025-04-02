@@ -6,6 +6,7 @@ interface Props {
 
 const Rating = ({ rating }: Props) => {
   const fullStars = Math.floor(rating / 2);
+  // Verifica se está mais próximo do próximo inteiro ou do inteiro anterior, para decidir se deve mostrar a metade da estrela
   const hasHalfStar = (rating / 2) % 2 >= 0.5;
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 

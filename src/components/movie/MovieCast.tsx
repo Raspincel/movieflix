@@ -8,6 +8,7 @@ interface Props {
 const MovieCast = ({ cast }: Props) => {
   const { t } = useTranslation();
 
+  // Para não deixar a seção vazia tomando espaço
   if (!cast.length) return null;
 
   return (

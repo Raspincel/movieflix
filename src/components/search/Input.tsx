@@ -1,4 +1,4 @@
-import { X, LoaderIcon } from 'lucide-react';
+import { X, LoaderIcon, Search } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
 
@@ -29,6 +29,7 @@ const SearchInput = ({ isExpanded, onFocus, searchQuery, onClose, onChange, isLo
       searchInputRef.current.focus();
     }
 
+    // Permite fechar o input de busca ao pressionar a tecla ESC
     const removeFocus = (e: KeyboardEvent) => {
       if (searchInputRef.current && e.key === 'Escape') {
         handleClose();

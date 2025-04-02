@@ -4,6 +4,7 @@ interface Props {
   transparent?: boolean;
 }
 
+// Componente que exibe um botão para alternar entre os idiomas
 export const LanguageSwitcher = ({ transparent }: Props) => {
   const { language, toggleLanguage } = useLanguage();
 

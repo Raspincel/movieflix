@@ -176,12 +176,14 @@ type NestedKeyOf<ObjectType extends object> = {
 
 type TranslationKey = NestedKeyOf<TranslationStructure>;
 
+// O hook useTranslation é responsável por retornar a função t que recebe uma chave de tradução e retorna a tradução correspondente. Chaves vêm no formato de strings separadas por ponto para indicar acesso a um objeto, como 'movies.popular'.
 export const useTranslation = () => {
   const { language } = useLanguage();
 
   const t = <K extends TranslationKey>(key: K): string => {
     const keys = key.split('.') as [keyof TranslationStructure, ...string[]];
 
+    // Obtém o valor da chave de tradução fornecida ao verificar se a chave existe no objeto de traduções.
     const value = keys.reduce((acc, currentKey) => {
       if (acc && typeof acc === 'object' && currentKey in acc) {
         return acc[currentKey as keyof typeof acc];

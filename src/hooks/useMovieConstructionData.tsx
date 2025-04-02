@@ -10,6 +10,7 @@ interface ReturnData {
   genres: Genre[];
 }
 
+// Retorna os dados necessários para a construção de filmes, como lista de gêneros e o caminho da imagem
 const useMovieConstructionData = (): ReturnData => {
   const {
     data: genresData,

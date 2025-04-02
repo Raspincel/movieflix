@@ -1,3 +1,4 @@
+// Configuration type extracted from the API response
 export interface TMDBConfiguration {
   change_keys: string[];
   images: {

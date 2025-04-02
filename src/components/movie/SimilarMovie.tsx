@@ -7,6 +7,7 @@ interface Props {
   id: number;
 }
 
+// Seção de filmes similares ao filme atual
 const SimilarMovie = ({ id }: Props) => {
   const [show, setShow] = useState(true);
   const { t } = useTranslation();

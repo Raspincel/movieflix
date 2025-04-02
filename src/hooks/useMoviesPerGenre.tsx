@@ -8,6 +8,7 @@ interface Args {
   page: number;
 }
 
+// Retorna os filmes de um gênero específico
 const useMoviesPerGenre = ({ genreId, page }: Args) => {
   const { basePath, genres, isError: auxIsError, isLoading: auxIsLoading } = useMovieConstructionData();
 
@@ -44,7 +45,7 @@ const useMoviesPerGenre = ({ genreId, page }: Args) => {
     movies,
     isLoading,
     isError,
-    // the api caps pages at 500
+    // a api limita as páginas em 500
     totalPages: Math.min(500, moviesData.total_pages),
     totalResults: Math.min(500*20, moviesData.total_results)
   };

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
 
+// Retorna o contexto de idioma utilizado para alterar o idioma por toda a aplicação
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {

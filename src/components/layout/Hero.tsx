@@ -1,5 +1,6 @@
 import { useTranslation } from '../../hooks/useTranslation';
 
+// Seção de destaque da página inicial
 const Hero = () => {
   const { t } = useTranslation();
   return (

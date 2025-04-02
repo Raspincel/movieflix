@@ -1,6 +1,7 @@
 import { DetailedMovieFetchResponse, FetchMovieCreditsResponse, MovieFetchResponse } from '../types/movie';
 import { apiClient } from './client';
 
+// Cria uma classe para abstrair as chamadas à API de filmes
 class MoviesApi {
   async getTopRatedMovies({ pageParam }: { pageParam: number }): Promise<MovieFetchResponse> {
     const response = await apiClient.get<MovieFetchResponse>(

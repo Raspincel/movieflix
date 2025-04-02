@@ -4,11 +4,13 @@ import Pagination from './Pagination';
 import useQueryMovies from '../../hooks/useQueryMovies';
 import MovieCard from '../movie/MovieCard';
 import { useTranslation } from '../../hooks/useTranslation';
+import { MOVIES_PER_PAGE } from '../../utils/constants';
 
 interface Props {
   transparent?: boolean;
 }
 
+// Barra de busca. Quando recebe foco, expande-se para exibir os resultados da busca
 const SearchBar = ({ transparent }: Props) => {
   const { t } = useTranslation();
 
@@ -50,8 +52,9 @@ const SearchBar = ({ transparent }: Props) => {
     }
   };
 
-  const from = 20 * (currentPage - 1) + 1;
-  const to = 20 * (currentPage - 1) + movies.length;
+  // Calcula o intervalo de resultados exibidos
+  const from = MOVIES_PER_PAGE * (currentPage - 1) + 1;
+  const to = MOVIES_PER_PAGE * (currentPage - 1) + movies.length;
 
   return (
     <div className="relative z-[1001] w-full h-10 max-w-96" ref={searchContainerRef}>

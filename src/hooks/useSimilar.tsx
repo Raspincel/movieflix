@@ -11,6 +11,7 @@ interface ReturnData {
   movies: Movie[];
 }
 
+// Retorna filmes similares ao filme passado como parâmetro
 const useSimilar = (movieId: number): ReturnData => {
   const {
     data: genresData,

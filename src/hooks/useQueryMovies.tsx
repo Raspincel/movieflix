@@ -8,6 +8,7 @@ interface Args {
   page: number;
 }
 
+// Retorna os filmes da API que correspondem à busca
 const useQueryMovies = ({ query, page }: Args) => {
   const { basePath, genres, isError: auxIsError, isLoading: auxIsLoading } = useMovieConstructionData();
 
@@ -37,7 +38,7 @@ const useQueryMovies = ({ query, page }: Args) => {
 
   return {
     movies,
-    // the api caps pages at 500
+    // a api limita as páginas em 500
     totalPages: Math.min(500, data.total_pages),
     totalResults: Math.min(500*20, data.total_results),
     isLoading,

@@ -9,7 +9,9 @@ import MovieCard from '../components/movie/MovieCard';
 import useMoviesPerGenre from '../hooks/useMoviesPerGenre';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useGenre from '../hooks/useGenre';
+import { MOVIES_PER_PAGE } from '../utils/constants';
 
+// Página que exibe os filmes de um gênero específico
 const CategoryMoviesPage = () => {
   const [params, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(Number(params.get('page')) || 1);
@@ -35,8 +37,9 @@ const CategoryMoviesPage = () => {
     return <ErrorPage />;
   }
 
-  const from = 20 * (page - 1) + 1;
-  const to = 20 * (page - 1) + movies.length;
+  // Calcula o intervalo de resultados exibidos
+  const from = MOVIES_PER_PAGE * (page - 1) + 1;
+  const to = MOVIES_PER_PAGE * (page - 1) + movies.length;
 
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
