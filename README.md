@@ -1,54 +1,242 @@
-# React + TypeScript + Vite
+# Movieflix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movieflix é uma aplicação web que permite ao usuário visualizar informações sobre filmes dos mais diversos gêneros e categorias
 
-Currently, two official plugins are available:
+![image](https://github.com/user-attachments/assets/5a8d657d-7927-4954-b038-a13c5eb6eaae)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://github.com/user-attachments/assets/bb4a7ab8-2b55-471d-84e5-9dcde37b143f)
 
-## Expanding the ESLint configuration
+## Executando o projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Formas de executar:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+1. [Modo de desenvolvimento sem Docker](#modo-de-desenvolvimento-sem-docker)
+2. [Modo de produção sem Docker](#modo-de-produção-sem-docker)
+3. [Modo de desenvolvimento com Docker](#modo-de-desenvolvimento-com-docker)
+4. [Modo de produção com Docker](#modo-de-produção-com-docker)
+5. [Modo de desenvolvimento com Docker compose](#modo-de-desenvolvimento-com-docker-compose)
+6. [Modo de produção com Docker compose](#modo-de-produção-com-docker)
+
+### Modo de desenvolvimento sem Docker
+
+1. Clone o repositório
+```bash
+git clone https://github.com/raspincel/movieflix.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+2. Acesse a pasta do projeto
+```bash
+cd movieflix
 ```
+
+3. Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente. Você pode escolher o valor de `VITE_TMDB_API_KEY` ou de `VITE_TMDB_TOKEN`.
+- `VITE_TMDB_API_KEY`: Chave de acesso à API do TMDB. Você pode encontrá-la em https://www.themoviedb.org/settings/api, ao fim da página, sob "API Key".
+- `VITE_TMDB_TOKEN`: O seu token de acesso que também permite acesso à API do TMDB. Você pode encontrá-lo em https://www.themoviedb.org/settings/api, logo acima de "API Key", sob "API Read Access Token".
+
+```bash
+VITE_TMDB_TOKEN=eyJ...
+VITE_TMDB_API_KEY=d66...
+```
+
+> [!NOTE]
+> Você precisa configurar apenas uma das duas variáveis de ambiente. Tanto configurando apenas `VITE_TMDB_API_KEY` quanto apenas ``VITE_TMDB_TOKEN`` retornará com sucesso os dados da API.
+
+4. Instale as dependências utilizando o gerenciador de pacotes de Node.js de sua preferência, como npm, Yarn, dentre outros:
+
+```bash
+npm install
+# ou
+yarn
+```
+
+5. Rode o script `dev`:
+
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+6. Acesse o endereço `http://localhost:5173` em seu navegador.
+
+### Modo de produção sem Docker
+
+1. Clone o repositório
+```bash
+git clone https://github.com/raspincel/movieflix.git
+```
+
+2. Acesse a pasta do projeto
+```bash
+cd movieflix
+```
+
+3. Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente. Você pode escolher o valor de `VITE_TMDB_API_KEY` ou de `VITE_TMDB_TOKEN`.
+- `VITE_TMDB_API_KEY`: Chave de acesso à API do TMDB. Você pode encontrá-la em https://www.themoviedb.org/settings/api, ao fim da página, sob "API Key".
+- `VITE_TMDB_TOKEN`: O seu token de acesso que também permite acesso à API do TMDB. Você pode encontrá-lo em https://www.themoviedb.org/settings/api, logo acima de "API Key", sob "API Read Access Token".
+
+```bash
+VITE_TMDB_TOKEN=eyJ...
+VITE_TMDB_API_KEY=d66...
+```
+
+> [!NOTE]
+> Você precisa configurar apenas uma das duas variáveis de ambiente. Tanto configurando apenas `VITE_TMDB_API_KEY` quanto apenas ``VITE_TMDB_TOKEN`` retornará com sucesso os dados da API.
+
+4. Instale as dependências utilizando o gerenciador de pacotes de Node.js de sua preferência, como npm, Yarn, dentre outros:
+
+```bash
+npm install
+# ou
+yarn
+```
+
+5. Rode o script `build`:
+
+```bash
+npm run build
+# ou
+yarn build
+```
+
+6. Rode o script `preview` para pré-visualizar a aplicação em sua máquina local, na ausência de um servidor de produção:
+```bash
+npm run preview
+# ou
+yarn preview
+```
+
+7. Acesse o endereço `http://localhost:4173` para visualizar o projeto em seu navegador.
+
+8. No servidor de produção, sirva o conteúdo da pasta `dist` com um servidor web como Apache ou Nginx.
+
+### Modo de desenvolvimento com Docker
+
+1. Clone o repositório
+```bash
+git clone https://github.com/raspincel/movieflix.git
+```
+
+2. Acesse a pasta do projeto
+```bash
+cd movieflix
+```
+
+3. Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente. Você pode escolher o valor de `VITE_TMDB_API_KEY` ou de `VITE_TMDB_TOKEN`.
+- `VITE_TMDB_API_KEY`: Chave de acesso à API do TMDB. Você pode encontrá-la em https://www.themoviedb.org/settings/api, ao fim da página, sob "API Key".
+- `VITE_TMDB_TOKEN`: O seu token de acesso que também permite acesso à API do TMDB. Você pode encontrá-lo em https://www.themoviedb.org/settings/api, logo acima de "API Key", sob "API Read Access Token".
+
+```bash
+VITE_TMDB_TOKEN=eyJ...
+VITE_TMDB_API_KEY=d66...
+```
+
+> [!NOTE]
+> Você precisa configurar apenas uma das duas variáveis de ambiente. Tanto configurando apenas `VITE_TMDB_API_KEY` quanto apenas ``VITE_TMDB_TOKEN`` retornará com sucesso os dados da API.
+
+4. Faça o build da imagem Docker
+
+```bash
+docker build --target dev -t movieflix .
+```
+
+5. Rode o container expondo a porta pela qual deseja acessar a aplicação localmente, como a porta 5173, e defininido o arquivo de configuração `.env` como variável de ambiente:
+
+```bash
+docker run -p 5173:5173 --env-file .env movieflix
+```
+
+6. Acesse o endereço `http://localhost:5173` em seu navegador.
+
+### Modo de produção com Docker
+
+1. Clone o repositório
+```bash
+git clone https://github.com/raspincel/movieflix.git
+```
+
+2. Acesse a pasta do projeto
+```bash
+cd movieflix
+```
+
+3. Faça o build da imagem Docker. Durante a build, informe a variável de ambiente `VITE_TMDB_API_KEY` ou ``VITE_TMDB_TOKEN``:
+
+```bash
+docker build --target prod --build-arg VITE_TMDB_API_KEY=$sua_chave_aqui -t movieflix .
+# ou
+docker build --target prod --build-arg VITE_TMDB_TOKEN=$seu_token_aqui -t movieflix .
+```
+
+4. Rode o container expondo a porta pela qual deseja acessar a aplicação localmente, como a porta 80:
+
+```bash
+docker run -p 80:80 movieflix
+```
+
+5. Acesse o endereço `http://localhost` em seu navegador.
+
+### Modo de desenvolvimento com Docker compose
+
+1. Clone o repositório
+```bash
+git clone https://github.com/raspincel/movieflix.git
+```
+
+2. Acesse a pasta do projeto
+```bash
+cd movieflix
+```
+
+3. Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente. Você pode escolher o valor de `VITE_TMDB_API_KEY` ou de `VITE_TMDB_TOKEN`.
+- `VITE_TMDB_API_KEY`: Chave de acesso à API do TMDB. Você pode encontrá-la em https://www.themoviedb.org/settings/api, ao fim da página, sob "API Key".
+- `VITE_TMDB_TOKEN`: O seu token de acesso que também permite acesso à API do TMDB. Você pode encontrá-lo em https://www.themoviedb.org/settings/api, logo acima de "API Key", sob "API Read Access Token".
+
+```bash
+VITE_TMDB_TOKEN=eyJ...
+VITE_TMDB_API_KEY=d66...
+```
+
+> [!NOTE]
+> Você precisa configurar apenas uma das duas variáveis de ambiente. Tanto configurando apenas `VITE_TMDB_API_KEY` quanto apenas ``VITE_TMDB_TOKEN`` retornará com sucesso os dados da API.
+
+4. Execute o comando para subir o container de desenvolvimento:
+
+```bash
+docker compose up movieflix-dev
+```
+
+5. Acesse o endereço `http://localhost:5173` em seu navegador.
+
+### Modo de produção com Docker compose
+
+1. Clone o repositório
+```bash
+git clone https://github.com/raspincel/movieflix.git
+```
+
+2. Acesse a pasta do projeto
+```bash
+cd movieflix
+```
+
+3. Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente. Você pode escolher o valor de `VITE_TMDB_API_KEY` ou de `VITE_TMDB_TOKEN`.
+- `VITE_TMDB_API_KEY`: Chave de acesso à API do TMDB. Você pode encontrá-la em https://www.themoviedb.org/settings/api, ao fim da página, sob "API Key".
+- `VITE_TMDB_TOKEN`: O seu token de acesso que também permite acesso à API do TMDB. Você pode encontrá-lo em https://www.themoviedb.org/settings/api, logo acima de "API Key", sob "API Read Access Token".
+
+```bash
+VITE_TMDB_TOKEN=eyJ...
+VITE_TMDB_API_KEY=d66...
+```
+
+> [!NOTE]
+> Você precisa configurar apenas uma das duas variáveis de ambiente. Tanto configurando apenas `VITE_TMDB_API_KEY` quanto apenas ``VITE_TMDB_TOKEN`` retornará com sucesso os dados da API.
+
+4. Execute o comando para subir o container de produção:
+
+```bash
+docker compose up movieflix-prod
+```
+
+5. Acesse o endereço `http://localhost` em seu navegador.
+
