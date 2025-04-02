@@ -1,4 +1,4 @@
-# Movieflix
+# MovieFlix
 
 Movieflix é uma aplicação web que permite ao usuário visualizar informações sobre filmes dos mais diversos gêneros e categorias
 
