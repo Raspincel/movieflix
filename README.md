@@ -1,10 +1,23 @@
-# Movieflix
+# MovieFlix
 
-Movieflix é uma aplicação web que permite ao usuário visualizar informações sobre filmes dos mais diversos gêneros e categorias
+MovieFlix é uma aplicação web que permite ao usuário visualizar informações sobre filmes dos mais diversos gêneros e categorias
 
 ![image](https://github.com/user-attachments/assets/5a8d657d-7927-4954-b038-a13c5eb6eaae)
 
 ![image](https://github.com/user-attachments/assets/bb4a7ab8-2b55-471d-84e5-9dcde37b143f)
+
+## Detalhes
+### Tecnologias utilizadas
+- React
+- Vite
+- Tailwind
+- TypeScript
+- React Query
+- React Context
+- Axios
+
+### Apis Externas:
+- [The Movie Database](https://developer.themoviedb.org/reference/intro/getting-started)
 
 ## Executando o projeto
 
