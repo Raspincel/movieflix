@@ -1,6 +1,6 @@
 # MovieFlix
 
-Movieflix é uma aplicação web que permite ao usuário visualizar informações sobre filmes dos mais diversos gêneros e categorias
+MovieFlix é uma aplicação web que permite ao usuário visualizar informações sobre filmes dos mais diversos gêneros e categorias
 
 ![image](https://github.com/user-attachments/assets/5a8d657d-7927-4954-b038-a13c5eb6eaae)
 
