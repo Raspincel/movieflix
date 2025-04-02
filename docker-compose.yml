@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  movieflix-prod:
+    build:
+      context: .
+      target: prod
+      args:
+        - VITE_TMDB_TOKEN=${VITE_TMDB_TOKEN}
+        - VITE_TMDB_API_KEY=${VITE_TMDB_API_KEY}
+    ports:
+      - "80:80"
+
+  # Serviço para desenvolvimento
+  movieflix-dev:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - ./:/app  # Monta o código fonte para desenvolvimento com hot-reload
+      - /app/node_modules  # Mantém os módulos da imagem (evita sobrescrita)
+    ports:
+      - "5173:5173" 

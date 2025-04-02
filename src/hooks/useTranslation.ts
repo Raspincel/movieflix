@@ -6,7 +6,10 @@ interface TranslationStructure {
   pageNotFound: string;
   errorPage: string;
   categoryPage: string;
-  popularMovies: string;
+  movies: {
+    popular: string;
+    topRated: string;
+  }
   hero: {
     title: string;
     subtitle: string;
@@ -22,6 +25,7 @@ interface TranslationStructure {
   };
   home: {
     theBest: string;
+    popular: string;
     genres: string;
     seeAll: string;
     carouselError: string;
@@ -61,7 +65,10 @@ const translations = {
     categoryPage: '{category} movies',
     pageNotFound: 'Page not found',
     errorPage: 'An error occurred',
-    popularMovies: 'Popular movies',
+    movies: {
+      popular: 'Popular movies',
+      topRated: 'Top rated movies',
+    },
     hero: {
       title: 'Discover amazing movies',
       subtitle: 'Find your next favorite movie in our vast collection of classics and new releases.',
@@ -69,6 +76,7 @@ const translations = {
     },
     home: {
       theBest: 'The best of all time',
+      popular: 'Popular movies right now',
       genres: 'Movies genres:',
       seeAll: 'See all',
       carouselError: 'An error occurred while fetching movies',
@@ -110,7 +118,10 @@ const translations = {
     appTitle: 'MovieFlix',
     pageNotFound: 'Página não encontrada',
     errorPage: 'Ocorreu um erro',
-    popularMovies: 'Filmes populares',
+    movies: {
+      popular: 'Filmes populares',
+      topRated: 'Filmes mais bem avaliados',
+    },
     hero: {
       title: 'Descubra filmes fantásticos',
       subtitle: 'Encontre o seu próximo filme favorito em nossa vasta coleção de clássicos e lançamentos.',
@@ -126,6 +137,7 @@ const translations = {
     },
     home: {
       theBest: 'Os melhores de todos os tempos',
+      popular: 'Populares no momento',
       genres: 'Gêneros de filmes:',
       seeAll: 'Ver todos',
       carouselError: 'Ocorreu um erro ao buscar os filmes',

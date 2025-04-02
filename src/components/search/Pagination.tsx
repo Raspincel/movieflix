@@ -61,7 +61,7 @@ const Pagination = ({ currentPage, goToPage, totalPages }: Props) => {
           onClick={() => goToPage(currentPage - 1)}
           disabled={currentPage === 1}
           className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-700 bg-gray-800 text-sm font-medium ${
-            currentPage === 1 ? 'text-gray-500 cursor-not-allowed' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            currentPage === 1 ? 'text-gray-500 cursor-not-allowed' : 'text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer'
           }`}
         >
           <span className="sr-only">{t('search.previous')}</span>
@@ -85,7 +85,7 @@ const Pagination = ({ currentPage, goToPage, totalPages }: Props) => {
             return (
               <span
                 key={`ellipsis-${index}`}
-                className="relative inline-flex items-center px-4 py-2 border border-gray-700 bg-gray-800 text-sm font-medium text-gray-400"
+                className="relative inline-flex items-center px-4 py-2 border border-gray-700 bg-gray-800 text-sm font-medium text-gray-400 select-none"
               >
                 ...
               </span>
@@ -97,7 +97,7 @@ const Pagination = ({ currentPage, goToPage, totalPages }: Props) => {
             <button
               key={page}
               onClick={() => goToPage(page)}
-              className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
+              className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium cursor-pointer ${
                 currentPage === page
                   ? 'z-10 bg-red-600 border-red-600 text-white'
                   : 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white'
@@ -114,7 +114,7 @@ const Pagination = ({ currentPage, goToPage, totalPages }: Props) => {
           className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-700 bg-gray-800 text-sm font-medium ${
             currentPage === totalPages
               ? 'text-gray-500 cursor-not-allowed'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+              : 'text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer'
           }`}
         >
           <span className="sr-only">{t('search.next')}</span>

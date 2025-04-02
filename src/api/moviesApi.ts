@@ -2,9 +2,17 @@ import { DetailedMovieFetchResponse, FetchMovieCreditsResponse, MovieFetchRespon
 import { apiClient } from './client';
 
 class MoviesApi {
+  async getTopRatedMovies({ pageParam }: { pageParam: number }): Promise<MovieFetchResponse> {
+    const response = await apiClient.get<MovieFetchResponse>(
+      `/movie/top_rated?page=${pageParam}`
+    );
+
+    return response.data;
+  }
+
   async getPopularMovies({ pageParam }: { pageParam: number }): Promise<MovieFetchResponse> {
     const response = await apiClient.get<MovieFetchResponse>(
-      `/movie/top_rated?page=${pageParam}&sort_by=popularity.desc`
+      `/movie/popular?page=${pageParam}&sort_by=popularity.desc`
     );
 
     return response.data;

@@ -61,8 +61,8 @@ const MoviesCarousel = ({ fetchMovies, onEmpty }: Props) => {
   }
 
   return (
-    <div className="container mx-auto py-4">
-      <Carousel responsive={responsive} infinite ssr={false} centerMode>
+    <div className="container mx-auto">
+      <Carousel responsive={responsive} infinite ssr={false} centerMode className='pb-10'>
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

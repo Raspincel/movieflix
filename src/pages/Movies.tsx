@@ -1,6 +1,5 @@
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import usePopularMovies from '../hooks/usePopularMovies';
 import LoadingPage from '../components/layout/Loading';
 import ErrorPage from '../components/layout/Error';
 import { useEffect, useState } from 'react';
@@ -8,13 +7,25 @@ import Pagination from '../components/search/Pagination';
 import { useTranslation } from '../hooks/useTranslation';
 import MovieCard from '../components/movie/MovieCard';
 import { useSearchParams } from 'react-router-dom';
+import { Movie } from '../types/movie';
 
-const PopularMoviesPage = () => {
+interface Props {
+  title: string;
+  useGetMovies: (data: { page: number }) => {
+    movies: Movie[];
+    isError: boolean;
+    isLoading: boolean;
+    totalPages: number;
+    totalResults: number;
+  }
+}
+
+const MoviesPage = ({ useGetMovies, title }: Props) => {
   const [params, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(Number(params.get('page')) || 1);
 
   const { t } = useTranslation();
-  const { isError, isLoading, movies, totalPages, totalResults } = usePopularMovies({ page });
+  const { isError, isLoading, movies, totalPages, totalResults } = useGetMovies({ page });
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -42,7 +53,7 @@ const PopularMoviesPage = () => {
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
       <Header />
       <main className="container mx-auto px-4">
-        <h2 className="mt-4 text-2xl font-bold">{t('popularMovies')}</h2>
+        <h2 className="mt-4 text-2xl font-bold">{title}</h2>
         <div className="mt-6 pb-16">
           <div className="text-gray-300 mb-4">
             {movies.length === 0
@@ -67,4 +78,4 @@ const PopularMoviesPage = () => {
   );
 };
 
-export default PopularMoviesPage;
+export default MoviesPage;

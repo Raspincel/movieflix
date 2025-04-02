@@ -1,0 +1,11 @@
+node_modules
+build
+dist
+.DS_Store
+.env
+README.md
+.git
+.gitignore
+.vscode
+yarn.lock
+package-lock.json
