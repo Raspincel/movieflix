@@ -6,6 +6,19 @@ MovieFlix é uma aplicação web que permite ao usuário visualizar informaçõe
 
 ![image](https://github.com/user-attachments/assets/bb4a7ab8-2b55-471d-84e5-9dcde37b143f)
 
+## Detalhes
+### Tecnologias utilizadas
+- React
+- Vite
+- Tailwind
+- TypeScript
+- React Query
+- React Context
+- Axios
+
+### Apis Externas:
+- [The Movie Database](https://developer.themoviedb.org/reference/intro/getting-started)
+
 ## Executando o projeto
 
 ### Formas de executar:
