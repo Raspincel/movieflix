@@ -5,6 +5,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Argumentos de Build-time (somente para produção)
+ARG ENV
 ARG VITE_TMDB_TOKEN
 ARG VITE_TMDB_API_KEY
 

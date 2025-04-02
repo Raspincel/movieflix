@@ -6,6 +6,7 @@ services:
       context: .
       target: prod
       args:
+        - ENV=prod
         - VITE_TMDB_TOKEN=${VITE_TMDB_TOKEN}
         - VITE_TMDB_API_KEY=${VITE_TMDB_API_KEY}
     ports:
